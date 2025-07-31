@@ -1,0 +1,7 @@
+{% extends 'variants_template/base_variant.html' %}
+
+{% block header %}
+    <title>3D Tictactoe</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/variants_css/qubic.css')}}">
+    <script type="text/javascript" src="{{url_for('static', filename = 'js/qubic.js')}}"></script>
+{% endblock header %}

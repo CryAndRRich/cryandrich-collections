@@ -1,0 +1,56 @@
+.information-form {
+    transform: none;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    width: 800px;
+}
+
+.title {
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+.variation {
+    width: 550px;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 80px;
+    margin-bottom: 20px;
+    transform: translateX(200px);
+    transition: border 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.variation img {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 80px;
+    border: 2px solid rgba(230, 230, 230, 0.3);
+    transition: border 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.variation .context {
+    font-size: 16px;
+    width: 350px;
+    margin-left: 15px;
+    opacity: 0;
+    text-align: justify;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.variation:hover {
+    border: 2px solid rgba(230, 230, 230, 0.3);
+    transform: none;
+}
+
+.variation:hover img {
+    border: 2px solid transparent;
+}
+
+.variation:hover .context {
+    opacity: 1;
+}

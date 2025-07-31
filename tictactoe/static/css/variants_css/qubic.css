@@ -1,0 +1,19 @@
+#play-area {
+    transform: translateX(10%);
+    width: 550px;
+    display: grid;
+    grid-template-columns: repeat(3, 5vw);
+}
+
+.grid {
+    transform: skew(-50deg);
+    float: left;
+    width: 63px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 4px;
+}

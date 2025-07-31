@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/base.css')}}">
+    {% block header %}{% endblock header %}
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAOtSAICAgAAmJv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMgACAAAAAAMCAAIAAAAAMDIAAgAAAAAiIiIiIiAAAAACMDIREAAAAAIDAhAQAAAAAjAyERAAACIiIiIiIAAAERIAAjAwAAAQEgACAwAAABESAAIwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AANO/AADrvwAA078AAMAHAAD5BwAA+pcAAPkHAADABwAAw5cAANOvAADDlwAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
+</head>
+<body>
+    <section class="information-form">
+        {% block content %}{% endblock content %}
+    </section>
+
+    {% block script %}{% endblock script %}
+</body>
+</html>

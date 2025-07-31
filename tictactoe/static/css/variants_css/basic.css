@@ -1,0 +1,15 @@
+#play-area {
+    width: 750px;
+}
+
+.grid {
+    float: left;
+    width: 55px;
+    height: 55px;
+    font-size: 30px;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin: 2px;
+}

@@ -1,0 +1,7 @@
+{% extends 'variants_template/base_variant.html' %}
+
+{% block header %}
+    <title>Hexagonal Tictactoe</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/variants_css/hexagonal.css')}}">
+    <script type="text/javascript" src="{{url_for('static', filename = 'js/hexagonal.js')}}"></script>
+{% endblock header %}

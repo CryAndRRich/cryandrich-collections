@@ -1,0 +1,7 @@
+{% extends 'variants_template/base_variant.html' %}
+
+{% block header %}
+    <title>Basic Tictactoe</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/variants_css/basic.css')}}">
+    <script type="text/javascript" src="{{url_for('static', filename = 'js/basic.js')}}"></script>
+{% endblock header %}

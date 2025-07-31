@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <audio src="{{url_for('static', filename = 'img/click.mp3')}}" id="audio"></audio>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/variants_css/base_variant.css')}}">
+    {% block header %}{% endblock header %}
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAOtSAICAgAAmJv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMgACAAAAAAMCAAIAAAAAMDIAAgAAAAAiIiIiIiAAAAACMDIREAAAAAIDAhAQAAAAAjAyERAAACIiIiIiIAAAERIAAjAwAAAQEgACAwAAABESAAIwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AANO/AADrvwAA078AAMAHAAD5BwAA+pcAAPkHAADABwAAw5cAANOvAADDlwAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
+</head>
+<body>
+    <section class="information-form light-mode">
+        <h1 id="status" class="light-mode">{{ msg['player1'] }}'s turn</h1>
+        
+        <section class="score-board">
+            <p class="light-mode" id="X wins">{{ msg['player1'] }}'s Score: 0</p>
+            <p class="light-mode" id="O wins">{{ msg['player2'] }}'s Score: 0</p>
+        </section>
+
+        <section class="button">
+            <button id="play-again" onclick="playAgain()" class="light-mode">Cancel Round</button>
+            <button id="reset-game" onclick="resetGame()" class="light-mode">Reset Game</button>
+            <button id="theme-switch" onclick="switchTheme()" class="light-mode">Dark Grid</button>
+        </section>
+    
+        <div id="play-area">
+        </div>
+
+        <form action="/variations/back" method='POST'>
+            <button class="return light-mode" type="submit">Return</button>
+        </form>
+    </section>
+
+    <script>
+        const msg1 = "{{ msg['player1'] }}";
+        const msg2 = "{{ msg['player2'] }}";
+
+        function switchChr() {
+            const statusLabel = document.getElementById("status");
+            if (statusLabel.innerText != msg1 + " wins" && statusLabel.innerText != msg2 + " wins") {
+                statusLabel.innerText = statusLabel.innerText == msg1 + "'s turn" ? msg2 + "'s turn" : msg1 + "'s turn";
+            }
+        }
+
+        function titleCheck() {
+            const statusLabel = document.getElementById("status");
+            const text = statusLabel.innerText
+            statusLabel.innerText = text.replace('X', msg1).replace('O', msg2);
+        }
+
+        function scoreBoard() {
+            const scoreX = document.getElementById("X wins");
+            const scoreO = document.getElementById("O wins");
+            scoreX.innerText = msg1 + "'s Score: " + XScore;
+            scoreO.innerText = msg2 + "'s Score: " + OScore;
+
+            titleCheck();
+        }
+
+        let currentTheme = 'light';
+        const colorTheme = new Map([
+            ['black', 'white'],
+            ['white', 'black'],
+            ['orange', 'gray'],
+            ['gray', 'orange']
+        ])
+
+        function switchTheme() {
+            const theme_button = document.getElementById('theme-switch');
+            if (currentTheme === 'dark') {
+                document.querySelectorAll('.dark-mode').forEach(function (element) {
+                    element.classList.remove('dark-mode');
+                    element.classList.add('light-mode');
+                });
+                currentTheme = 'light';
+                theme_button.innerText = 'Dark Grid';
+            }
+            else {
+                document.querySelectorAll('.light-mode').forEach(function (element) {
+                    element.classList.remove('light-mode');
+                    element.classList.add('dark-mode');
+                });
+                currentTheme = 'dark';
+                theme_button.innerText = 'Light Grid';
+            }
+            const buttons = document.getElementsByClassName('grid');
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].style.backgroundColor = colorTheme.get(buttons[i].style.backgroundColor);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            addButtons();
+        });
+    </script>
+</body>
+</html>

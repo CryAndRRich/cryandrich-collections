@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/home.css')}}">
+    <title>Tictactoe Game</title>
+{% endblock header %}
+
+{% block content %}
+    <form action="/variations" method='POST'>
+        <h1 class="title">Type in your name</h1>
+        <section class="player-name">
+            <input type="text" placeholder="X Player" name="player1">
+        </section>
+        <section class="player-name">
+            <input type="text" placeholder="O Player" name="player2">
+        </section>
+
+        <button class="continue-button">Continue</button>
+    </form>
+{% endblock content %}
