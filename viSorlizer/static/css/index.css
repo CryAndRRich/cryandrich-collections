@@ -1,0 +1,69 @@
+body {
+    background: url(/static/images/background.jpg);
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#header {
+    font-family: 'Oxygen', monospace, Courier;
+    color: white;
+    padding-right: 25px;
+    margin-right: 20%;
+    margin-top: 25vh;
+    font-size: 6vw;
+    letter-spacing: 3px;
+    position: relative;
+    text-align: right;
+    font-weight: bold;
+    border-right: 5px solid #d17f3f;
+    cursor: pointer;
+}
+
+#cover {
+    font-family: 'Ubuntu', monospace, Courier;
+    position: relative;
+    width: 100%;
+    margin-top: 25vh;
+    padding-top: 2vh;
+    min-height: 100vh;
+    display: block;
+    overflow: auto;
+    color: white;
+    background: linear-gradient(0deg, rgba(20, 14, 8, 0.944) 0%, rgba(22,22,22,1) 70%);
+    word-wrap: normal;
+}
+
+#cover a:visited {
+    color: #d17f3f;
+}
+
+#cover a {
+    color: #d17f3f;
+}
+
+#description-box {
+    margin: auto;
+    padding: 0 5vw;
+    font-size: 25px;
+    max-width: 65vw;
+    position: relative;
+}
+
+#description-box button {
+    background-color: #d17f3f;
+    outline: none;
+    border: none;
+    margin-bottom: 30px;
+    position: relative;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 160px;
+    height: 40px;
+    border-radius: 25px;
+    font-family: 'Ubuntu', monospace, Courier;
+    font-size: 20px;
+    cursor: pointer;
+}

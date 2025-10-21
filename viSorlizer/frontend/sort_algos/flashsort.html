@@ -1,0 +1,27 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/flashsort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+Flash Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Flashsort">Flash sort</a> is an efficient in-place, distribution sorting 
+algorithm. It' s rearrangement phase operates in cycles. Elements start out "unclassified", then are moved to the 
+correct bucket and considered "classified"<br><br>The basic procedure is to choose an unclassified element, find its 
+correct bucket, exchange it with an unclassified element there, mark it as classified, and then repeat with the just-exchanged unclassified 
+element. Eventually, the element is exchanged with itself and the cycle ends
+</p>
+{% endblock %}
+
+{% block time %}
+O(n<sup>2</sup>)
+{% endblock %}
+
+{% block space %}
+O(n)
+{% endblock %}

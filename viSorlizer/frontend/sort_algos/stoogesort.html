@@ -1,0 +1,26 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/stoogesort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+Stooge Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Stooge_sort">Stooge sort</a> is a recursive sorting algorithm. The algorithm is defined as 
+follows:<br><br>If the value at the start is larger than the value at the end, swap them. If there are three or 
+more elements in the list, then Stooge sort the initial 2/3 of the list, Stooge sort the final 2/3 of the list and 
+Stooge sort the initial 2/3 of the list again
+</p>
+{% endblock %}
+
+{% block time %}
+O(n<sup>log3/log1.5</sup>)
+{% endblock %}
+
+{% block space %}
+O(n)
+{% endblock %}

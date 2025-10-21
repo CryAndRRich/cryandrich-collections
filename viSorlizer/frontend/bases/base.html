@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>viSorlizer {% block headtitle %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/base.css') }}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <div class="sidenav" id="sidenav">
+        <a href="/" class="sidenav-title no-remove"><i class="material-icons icon">home</i> Home</a>
+        <div id="sepline" class="no-remove"></div>
+        <a href="/ranking" class="sidenav-title no-remove"><i class="material-icons icon">sort</i> Ranking</a>
+        <div class="sidenav-title no-remove"><i class="material-icons icon">filter_list</i> Sorts</div>
+        <a href="/insertionsort" class="sidenav-element no-remove">Insertion Sort</a>
+        <a href="/selectionsort" class="sidenav-element no-remove">Selection Sort</a>
+        <a href="/bubblesort" class="sidenav-element no-remove">Bubble Sort</a>
+        <a href="/oddevensort" class="sidenav-element no-remove">Odd-even Sort</a>
+        <a href="/cocktailsort" class="sidenav-element no-remove">Cocktail Sort</a>
+        <a href="/combsort" class="sidenav-element no-remove">Comb Sort</a>
+        <a href="/exchangesort" class="sidenav-element no-remove">Exchange Sort</a>
+        <a href="/gnomesort" class="sidenav-element no-remove">Gnome Sort</a>
+        <a href="/pancakesort" class="sidenav-element no-remove">Pancake Sort</a>
+        <a href="/cyclesort" class="sidenav-element no-remove">Cycle Sort</a>
+        <a href="/stoogesort" class="sidenav-element no-remove">Stooge Sort</a>
+        <a href="/strandsort" class="sidenav-element no-remove">Strand Sort</a>
+        <a href="/shellsort" class="sidenav-element no-remove">Shell Sort</a>
+        <a href="/mergesort" class="sidenav-element no-remove">Merge Sort</a>
+        <a href="/timsort" class="sidenav-element no-remove">Tim Sort</a>
+        <a href="/quicksort" class="sidenav-element no-remove">Quick Sort</a>
+        <a href="/introsort" class="sidenav-element no-remove">Intro Sort</a>
+        <a href="/heapsort" class="sidenav-element no-remove">Heap Sort</a>
+        <a href="/cubesort" class="sidenav-element no-remove">Cube Sort</a>
+        <a href="/pesort" class="sidenav-element no-remove">PE Sort</a>
+        <a href="/flashsort" class="sidenav-element no-remove">Flash Sort</a>
+    </div>
+
+    <div class="topnav">
+        <button class="sidenav-btn topnav-element ripple open" id="sidenav-menu" style="cursor: pointer;"><i class="material-icons icon">menu</i></button>
+        <a href="/" class="topnav-element">SORTING ALGORITHMS VISUALIZER</a>
+        {% block audio %} {% endblock %}
+    </div>
+    {% block content %}
+    {% endblock %}
+
+    <button class="open chatbot" id="open-chatbot"><i class="material-icons icon">smart_toy</i></button>
+    
+    <div class="chat-container" id="chat-container">
+        <div id="chat-header">viSorlizer Bot</div>
+        <div id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Ask question...">
+        <button id="send-btn">Send</button>
+    </div>
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
+</body>
+</html>

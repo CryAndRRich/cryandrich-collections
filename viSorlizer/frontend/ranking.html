@@ -1,0 +1,30 @@
+{% extends "bases/base.html" %}
+{% block headtitle %}
+- Ranking
+{% endblock %}
+{% block head %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/ranking.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/ranking.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="table-box" data-aos="fade-right">
+    <div style="font-family: 'Jura', Courier, monospace; font-size: 35px;">COMPARISON OF 21 SORTING ALGORITHMS</div>
+    <table class="sort-table">
+        <thead>
+            <tr>
+                <th>Algorithms</th>
+                <th>Best</th>
+                <th>Average</th>
+                <th>Worst</th>
+                <th>Memory</th>
+                <th>Stable</th>
+                <th>In-place</th>
+                <th>Method</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+</div>
+{% endblock %}

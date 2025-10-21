@@ -1,0 +1,51 @@
+* {
+    color: white;
+    font-size: 22px;
+}
+
+body {
+    background: url(/static/images/background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.table-box {
+    margin: 60px 120px;
+    float: right;
+    text-align: left;
+}
+
+.table-box div {
+    margin: 0 200px;
+    padding-top: 50px;
+    cursor: pointer;
+}
+
+.sort-table {
+    margin-top: 30px;
+    border-collapse: collapse;
+    border-radius: 5px;
+    border-style: hidden;
+    cursor: pointer;
+}
+
+.sort-table tr {
+    border: 2px solid #d17f3f;;
+}
+
+.sort-table th, td {
+    border-right: 2px solid #d17f3f;
+    padding: 12px;
+    text-align: center;
+}
+
+.sort-table td a {
+    text-decoration: None;
+}
+
+.sort-table td a:hover {
+    font-weight: bold;
+}
+

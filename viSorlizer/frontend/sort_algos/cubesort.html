@@ -1,0 +1,28 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/cubesort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+Cube Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Cubesort">Cube sort</a> is a parallel sorting 
+algorithm that builds a self-balancing multi-dimensional array from the keys to be sorted. It works 
+by dividing an array into small cubes, sorting each cube, and then merging the cubes back together<br><br>
+The algorithm begins by dividing the array into small cubes of size 8 or 16 then it sorts each cube 
+using an internal sorting algorithm such as insertion sort or quick sort. Once each cube is sorted, 
+the algorithm then merges the cubes back together using a merge sort algorithm
+</p>
+{% endblock %}
+
+{% block time %}
+O(nlogn)
+{% endblock %}
+
+{% block space %}
+O(n)
+{% endblock %}

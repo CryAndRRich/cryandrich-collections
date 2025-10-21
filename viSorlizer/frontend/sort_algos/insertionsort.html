@@ -1,0 +1,26 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/insertionsort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+Insertion Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Insertion_sort">Insertion sort</a> is a simple sorting algorithm 
+that builds the final sorted array (or list) one item at a time by comparisons<br><br>At each iteration, 
+insertion sort removes one element from the input data, finds the location it belongs within the sorted 
+list, and inserts it there. It repeats until no input elements remain
+</p>
+{% endblock %}
+
+{% block time %}
+O(n<sup>2</sup>)
+{% endblock %}
+
+{% block space %}
+O(1)
+{% endblock %}

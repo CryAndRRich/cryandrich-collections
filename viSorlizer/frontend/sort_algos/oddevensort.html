@@ -1,0 +1,27 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/oddevensort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+Odd-even Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort">Odd-even sort</a>, also known as brick sort 
+or parity sort, is a relatively simple sorting algorithm. It functions by comparing all odd/even indexed 
+pairs of adjacent elements in the list and, if a pair is in the wrong order the elements are switched<br><br>
+The next step repeats this for even/odd indexed pairs. Then it alternates between odd/even and even/odd 
+steps until the list is sorted
+</p>
+{% endblock %}
+
+{% block time %}
+O(n<sup>2</sup>)
+{% endblock %}
+
+{% block space %}
+O(1)
+{% endblock %}

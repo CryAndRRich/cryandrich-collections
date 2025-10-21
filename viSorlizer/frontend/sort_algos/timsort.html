@@ -1,0 +1,26 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/timsort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+Tim Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Merge_sort#">Merge sort</a> is an efficient, general-purpose, 
+and comparison-based sorting algorithm. Conceptually, a merge sort works as follows:<br><br>Divide the 
+unsorted list into n sub-lists, each containing one element<br><br>Repeatedly merge sublists to produce 
+new sorted sublists until there is only one sublist remaining. This will be the sorted list
+</p>
+{% endblock %}
+
+{% block time %}
+O(nlogn)
+{% endblock %}
+
+{% block space %}
+O(n)
+{% endblock %}

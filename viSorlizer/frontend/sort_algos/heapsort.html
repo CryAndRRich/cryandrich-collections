@@ -1,0 +1,29 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/heapsort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+Heap Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Heapsort">Heap sort</a>is an efficient, comparison-based sorting 
+algorithm that reorganizes an input array into a heap and then repeatedly removes the largest node from 
+that heap, placing it at the end of the array. The heap sort algorithm can be divided into two phases: 
+heap construction, and heap extraction<br><br>In the first phase, a heap is built out of the data<br><br>
+In the second phase, the heap is converted to a sorted array by repeatedly removing the largest element 
+from the heap, and placing it at the end of the array. The heap is updated after each removal to maintain 
+the heap property. Once all objects have been removed from the heap, the result is a sorted array
+</p>
+{% endblock %}
+
+{% block time %}
+O(nlogn)
+{% endblock %}
+
+{% block space %}
+O(1)
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/pesort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+PE Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Proportion_extend_sort">PE sort</a>, or proportion extend sort, 
+is an in-place, comparison-based sorting algorithm which attempts to improve on the performance, 
+particularly the worst-case performance, of quicksort<br><br>Proportion extend sort begins with a sorted 
+prefix of k elements, then uses the median of that sample to partition the following pk elements. 
+By bounding the size ratio p between the sample and the data being partitioned, the imbalance is limited
+</p>
+{% endblock %}
+
+{% block time %}
+O(nlogn)
+{% endblock %}
+
+{% block space %}
+O(logn)
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/pancakesort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+Pancake Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Pancake_sorting">Pancake sort</a> is the mathematical problem of 
+sorting a disordered stack of pancakes in order of size when a spatula can be inserted at any point in the stack 
+and used to flip all pancakes above it<br><br>The data structure gets divided in two parts, a sorted one and one 
+still to sort. For each flip, the maximum elements of the unsorted sublist gets put at the end of the data structure 
+by flipping the unsorted part and the sorted sublist gets incremented by one. This procedure gets executed until 
+the unsorted part is made up of just one element
+</p>
+{% endblock %}
+
+{% block time %}
+O(n<sup>2</sup>)
+{% endblock %}
+
+{% block space %}
+O(1)
+{% endblock %}

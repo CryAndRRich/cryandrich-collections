@@ -1,0 +1,29 @@
+{% extends "bases/base_sort.html" %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/sort_algos/selectionsort.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}
+Selection Sort
+{% endblock %}
+
+{% block info %}
+<p data-aos="fade-right">
+<a href="https://en.wikipedia.org/wiki/Selection_sort">Selection sort</a> is an in-place comparison 
+sorting algorithm and is noted for its simplicity and has performance advantages over more complicated 
+algorithms in certain situations, particularly where auxiliary memory is limited<br><br> The algorithm 
+divides the input list into two parts: a sorted sublist of items which is built up from left to right 
+at the front of the list and a sublist of the remaining unsorted items that occupy the rest of 
+the list then proceeds by finding the smallest element in the unsorted sublist, exchanging it with 
+the leftmost unsorted element, and moving the sublist boundaries one element to the right
+</p>
+{% endblock %}
+
+{% block time %}
+O(n<sup>2</sup>)
+{% endblock %}
+
+{% block space %}
+O(1)
+{% endblock %}
