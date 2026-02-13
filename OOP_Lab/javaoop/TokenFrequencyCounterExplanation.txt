@@ -1,0 +1,11 @@
+A short explanation of my implementation approach:
+
+- This program reads all command-line arguments and joins 
+them into a single input string
+- The string is then split into tokens using whitespace as 
+the delimiter
+- Each token is converted to lowercase
+- A HashMap is used to store the frequency of each token
+- After counting, the token keys are sorted alphabetically
+- The final output is formatted as {token = frequency, …} 
+and printed to the console

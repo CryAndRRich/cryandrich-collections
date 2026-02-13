@@ -1,0 +1,19 @@
+Question:
+People often say: “Static kills Object-Oriented Programming”. However, in some special cases, we still need to use static members (also called classifier members). 
+Please explain when and why we can use static in Object-Oriented Programming.
+
+Answer:
+The explanation includes:
+- What static means in OOP: 
++ "static" means that a variable or method belongs to the class itself, not to any individual object of that class
++ This means that there is only one copy of a static variable for the entire class and static methods can be called without creating an object of the class
+
+- When it is appropriate to use static attributes or methods:
++ When the data or behavior is shared among all objects and does not depend on any particular instance
++ When a method that perform general operations and do not need object state
+
+- Why using too many static members might go against OOP principles:
++ Static data is shared globally, so it can be modified from anywhere, which breaks information hiding
++ Static methods cannot be overridden in subclasses, reducing flexibility
++ Too many static variables and methods eliminates the benefits of creating different objects with their own states and behaviors
++ Static methods are harder to test and replace
