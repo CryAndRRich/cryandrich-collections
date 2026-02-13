@@ -1,0 +1,7 @@
+- If users choose "Cancel", then the pop-up windows will show the message "You 've chosen No".
+- Customize:
+	- Let String[] options = {I do, I don't} // or options = {Yes, No}
+	- Set choice = JoptionPane.showOptionDiaglog with parameter (options, options[0])
+	- Check if choice = 0      => showMessageDialog("I do")
+		    else if choice = 1 => showMessageDialog("I don't)
+		    else               => showMessageDialog("Dialog closed")
