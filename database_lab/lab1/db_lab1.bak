@@ -1,0 +1,291 @@
+-- MySQL dump 10.13  Distrib 9.6.0, for macos14.8 (x86_64)
+--
+-- Host: localhost    Database: hr_db
+-- ------------------------------------------------------
+-- Server version	9.6.0
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN;
+SET @@SESSION.SQL_LOG_BIN= 0;
+
+--
+-- GTID state at the beginning of the backup 
+--
+
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ 'e51ecc46-418c-11f1-b220-d147efda75bd:1-30';
+
+--
+-- Table structure for table `countries`
+--
+
+DROP TABLE IF EXISTS `countries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `countries` (
+  `country_id` varchar(2) NOT NULL,
+  `country_name` varchar(40) DEFAULT NULL,
+  `region_id` int DEFAULT NULL,
+  PRIMARY KEY (`country_id`),
+  KEY `region_id` (`region_id`),
+  CONSTRAINT `countries_ibfk_1` FOREIGN KEY (`region_id`) REFERENCES `regions` (`region_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `countries`
+--
+
+LOCK TABLES `countries` WRITE;
+/*!40000 ALTER TABLE `countries` DISABLE KEYS */;
+INSERT INTO `countries` VALUES ('AU','Australia',2),('CN','China',NULL),('FR','France',NULL),('JP','Japan',3),('KR','South Korea',NULL),('US','USA',2),('VN','Vietnam',3);
+/*!40000 ALTER TABLE `countries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `country_new`
+--
+
+DROP TABLE IF EXISTS `country_new`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `country_new` (
+  `country_id` varchar(2) NOT NULL,
+  `country_name` varchar(40) DEFAULT NULL,
+  `region_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `country_new`
+--
+
+LOCK TABLES `country_new` WRITE;
+/*!40000 ALTER TABLE `country_new` DISABLE KEYS */;
+INSERT INTO `country_new` VALUES ('KR','South Korea',NULL);
+/*!40000 ALTER TABLE `country_new` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `departments`
+--
+
+DROP TABLE IF EXISTS `departments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `departments` (
+  `department_id` int NOT NULL,
+  `department_name` varchar(30) DEFAULT NULL,
+  `manager_id` int DEFAULT NULL,
+  `location_id` int DEFAULT NULL,
+  PRIMARY KEY (`department_id`),
+  KEY `location_id` (`location_id`),
+  KEY `manager_id` (`manager_id`),
+  CONSTRAINT `departments_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `locations` (`location_id`),
+  CONSTRAINT `departments_ibfk_2` FOREIGN KEY (`manager_id`) REFERENCES `employees` (`employee_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `departments`
+--
+
+LOCK TABLES `departments` WRITE;
+/*!40000 ALTER TABLE `departments` DISABLE KEYS */;
+INSERT INTO `departments` VALUES (116,'AI Research',149,1);
+/*!40000 ALTER TABLE `departments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `employees`
+--
+
+DROP TABLE IF EXISTS `employees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `employees` (
+  `employee_id` int NOT NULL,
+  `first_name` varchar(20) DEFAULT NULL,
+  `last_name` varchar(25) DEFAULT NULL,
+  `email` varchar(25) DEFAULT NULL,
+  `phone_number` varchar(20) DEFAULT NULL,
+  `hire_date` date DEFAULT NULL,
+  `job_id` varchar(10) DEFAULT NULL,
+  `salary` int DEFAULT NULL,
+  `commission_pct` decimal(18,3) DEFAULT NULL,
+  `manager_id` int DEFAULT NULL,
+  `department_id` int DEFAULT NULL,
+  PRIMARY KEY (`employee_id`),
+  KEY `job_id` (`job_id`),
+  KEY `department_id` (`department_id`),
+  KEY `manager_id` (`manager_id`),
+  CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`),
+  CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`),
+  CONSTRAINT `employees_ibfk_3` FOREIGN KEY (`manager_id`) REFERENCES `employees` (`employee_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employees`
+--
+
+LOCK TABLES `employees` WRITE;
+/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+INSERT INTO `employees` VALUES (149,'Nam','Hai','not available',NULL,'2020-01-01','MGR',NULL,0.100,NULL,116),(611,'Hai','Tran','not available',NULL,'2026-04-01','DSAI',2000000,0.100,149,116),(6110,'Hai2','Tran','not available',NULL,'2026-04-01','DSAI',2000000,0.100,149,116);
+/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_grades`
+--
+
+DROP TABLE IF EXISTS `job_grades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job_grades` (
+  `grade_level` varchar(2) NOT NULL,
+  `lowest_sal` int DEFAULT NULL,
+  `highest_sal` int DEFAULT NULL,
+  PRIMARY KEY (`grade_level`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_grades`
+--
+
+LOCK TABLES `job_grades` WRITE;
+/*!40000 ALTER TABLE `job_grades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `job_grades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_history`
+--
+
+DROP TABLE IF EXISTS `job_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job_history` (
+  `employee_id` int NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL,
+  `job_id` varchar(10) DEFAULT NULL,
+  `department_id` int DEFAULT NULL,
+  PRIMARY KEY (`employee_id`,`start_date`),
+  KEY `job_id` (`job_id`),
+  KEY `department_id` (`department_id`),
+  CONSTRAINT `job_history_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`),
+  CONSTRAINT `job_history_ibfk_2` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`),
+  CONSTRAINT `job_history_ibfk_3` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_history`
+--
+
+LOCK TABLES `job_history` WRITE;
+/*!40000 ALTER TABLE `job_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `job_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jobs`
+--
+
+DROP TABLE IF EXISTS `jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `jobs` (
+  `job_id` varchar(10) NOT NULL,
+  `job_title` varchar(35) DEFAULT NULL,
+  `min_salary` int DEFAULT NULL,
+  `max_salary` int DEFAULT NULL,
+  PRIMARY KEY (`job_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jobs`
+--
+
+LOCK TABLES `jobs` WRITE;
+/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
+INSERT INTO `jobs` VALUES ('DSAI','Engineer',10000000,100000000),('MGR','Manager',10000,20000);
+/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `locations`
+--
+
+DROP TABLE IF EXISTS `locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `locations` (
+  `location_id` int NOT NULL,
+  `street_address` varchar(25) DEFAULT NULL,
+  `postal_code` varchar(12) DEFAULT NULL,
+  `city` varchar(30) DEFAULT NULL,
+  `state_province` varchar(25) DEFAULT NULL,
+  `country_id` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`location_id`),
+  KEY `country_id` (`country_id`),
+  CONSTRAINT `locations_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`country_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locations`
+--
+
+LOCK TABLES `locations` WRITE;
+/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+INSERT INTO `locations` VALUES (1,'Hanoi',NULL,NULL,NULL,'VN');
+/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `regions`
+--
+
+DROP TABLE IF EXISTS `regions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `regions` (
+  `region_id` int NOT NULL,
+  `region_name` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`region_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `regions`
+--
+
+LOCK TABLES `regions` WRITE;
+/*!40000 ALTER TABLE `regions` DISABLE KEYS */;
+INSERT INTO `regions` VALUES (1,'Europe'),(2,'Americas'),(3,'Asia'),(4,'Middle East and Africa');
+/*!40000 ALTER TABLE `regions` ENABLE KEYS */;
+UNLOCK TABLES;
+SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-04-27  0:09:11
